@@ -6,7 +6,9 @@ router.get("/:id", (req, res) =>{
     res.status(200).json({
         message: "Get using id",
         metadata: {
-
+            host: req.hostname,
+            method: req.method,
+            port: process.env.port
         }
     });
 });
@@ -16,7 +18,9 @@ router.post('/:id', (req, res) =>{
     res.status(200).json({
         message: "Post using id",
         metadata: {
-
+            host: req.hostname,
+            method: req.method,
+            port: process.env.port
         }
     });
 });
@@ -26,7 +30,9 @@ router.delete('/:id', (req, res) =>{
     res.status(200).json({
         message: "Delete using id",
         metadata: {
-
+            host: req.hostname,
+            method: req.method,
+            port: process.env.port
         }
     });
 });
