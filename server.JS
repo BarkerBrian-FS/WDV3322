@@ -1,7 +1,11 @@
-const express = require("express");
-require("dotenv").config();
-const app = express();
+const http = require('http');
+require('dotenv').config();
+const app = require('./app/app')
 const port = process.env.port
+
+http.createServer().listen(process.env.port, () => {
+    console.log(`Server is running on port ${process.env.port}`)
+});
 
 app.get("/",(req, res, next) => {
    res.json({
