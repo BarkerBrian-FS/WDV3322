@@ -5,8 +5,8 @@ const connect = async () => {
     await mongoose.connect('mongodb://localhost:27017/demo');
 }
 
-const findUser = async ({}) => {
-    return await findUser.save()
+const findUser = async (obj) => {
+    return await user.findOne()
 }
 
 const saveUser = async (newUser) => {
