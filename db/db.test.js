@@ -2,7 +2,7 @@ const {saveUser, connect, disconnect, findUser} = require('./db');
 const User = require('../api/models/user');
 const mongoose = require('mongoose');
 
-//jest.mock('./db')
+jest.mock('./db')
 
 beforeEach( async ()  => {
    await connect()
@@ -17,7 +17,7 @@ describe('DB Functions', () => {
             address: '123 Washington' ,
             city: 'Miami' ,
             state: 'Florida' ,
-            zip: '86753',
+            zip: 86753,
             email: 'brian@brian.com' ,
             password: 'Batman'
         });
@@ -25,7 +25,7 @@ describe('DB Functions', () => {
 
         expect(newUser.address).toEqual('123 Washington');
         expect(newUser.city).toEqual('Miami');
-        expect(newUser.zip).toEqual('86753');
+        expect(newUser.zip).toEqual("86753");
     })
 
     test('find user', async () => {
