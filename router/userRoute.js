@@ -9,9 +9,7 @@ const checkAuth = require('../auth/checkAuth');
 const { restart } = require('nodemon');
 require('dotenv').config;
 
-router.get("/profile", checkAuth,(req, res, next) => {
-    res.status(200).json({message: req.userData});
-});
+
 
 router.post("/signup",(req, res) => {
     findUser({email: req.body.email})
@@ -56,8 +54,10 @@ router.post("/login",async (req, res) => {
             const token = jwt.sign({email: user.email, firstName: user.firstName, lastName: user.lastName}, 
                 process.env.jwt_key);
             res.status(201).json({
+                firstName: user.firstName,
                 message: 'Authenticated',
                 token: token,
+                
             })
             }
             else{
@@ -67,7 +67,11 @@ router.post("/login",async (req, res) => {
         else{
             res.status(401).json({message: 'user doesnt exist' })
         }
-    })
+    });
+
+    router.get("/profile", checkAuth, (req, res, next) => {
+        res.status(200).json({message: req.userData});
+    });
 
 
 module.exports = router;
