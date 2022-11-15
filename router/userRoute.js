@@ -50,10 +50,7 @@ router.post("/signup",(req, res) => {
 
 router.post("/login",async (req, res) => {
     let user = await findUser({email: req.body.email})
-    if(!user){
-        return res.status(404).json({message: "user not found"});
-    }
-     if(user){
+     if(user.email == req.body.email){
         let validPassword = await bcrypt.compare(req.body.password, user.password);
         if(validPassword){
             const token = jwt.sign({email: user.email, firstName: user.firstName, lastName: user.lastName}, 
@@ -65,7 +62,10 @@ router.post("/login",async (req, res) => {
             }
             else{
                 res.status(401).json({message: 'Authentication Failed' })
-            }
+            } 
+        }
+        else{
+            res.status(401).json({message: 'user doesnt exist' })
         }
     })
 

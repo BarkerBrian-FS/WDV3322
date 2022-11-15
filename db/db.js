@@ -6,7 +6,7 @@ const connect = async () => {
     await mongoose.connect(process.env.mongoDbTest);
 }
 
-const findUser = async () => {
+const findUser = async ({}) => {
     return await user.findOne();
 }
 
