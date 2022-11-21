@@ -1,0 +1,216 @@
+{
+    "openapi" : "3.0.0",
+    "info" : {
+        "title" : "API Docs",
+        "version": "1.0.0",
+        "contact" : {
+            "name" : "Brian Barker",
+            "email" : "brian.m.barker1@gmail.com",
+            "url" : "www.brianbarker.com"
+        }
+    },
+    "servers" : [
+        {
+            "url" : "http//localhost:3001",
+            "description" : "Local Server"
+        }
+    ],
+    "components" : {
+        "securitySchemes" : {
+            "bearerAuth" : {
+                "type" : "http",
+                "scheme" : "bearer",
+                "bearerFormat" : "JWT"
+            }
+        }
+    }, 
+    "security" : [
+        {
+            "bearerAuth" : []
+        }
+    ],
+
+    "paths" : {
+        "/signUp": {
+            "post" : {
+                "tags" : [
+                    "Post"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful"
+                    },
+                    "201": {
+                        "description": "Successful"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Unable to Post"
+                    }
+                }
+            },
+            "summary" : "Post a new user",
+            "requestBody" : {
+                "content" : {
+                    "application/json" : {
+                        "schema" : {
+                            "type" : "object",
+                            "properties" : {
+                                "firstName": {
+                                    "type": "String",
+                                    "default": "Brian"
+                                },
+                                "lastName": {
+                                    "type": "String",
+                                     "default": "Barker"
+                                },
+                                "address": {
+                                   "type": "String",
+                                   "default": "123 main"
+                                },
+                                "city": {
+                                    "type": "String",
+                                    "default": "Wichita"
+                                },
+                                "state": {
+                                    "type": "String",
+                                    "default": "KS"
+                                },
+                                "zip": {
+                                    "type": "String",
+                                    "default": 67202
+                                },
+                                "email": {
+                                    "type": "String",
+                                    "default": "brian@brian.com"
+                                },
+                                "password": {
+                                    "type": "String",
+                                    "default": "batmant1234"
+                                }
+                            }
+                        }
+                    }
+                }
+                
+                
+            }
+            
+        },
+        
+        "/login" : {
+            "post" : {
+                    "tags" : [
+                        "Post"
+                    ],
+                    "responses": {
+                        "200": {
+                            "description": "Successful"
+                        },
+                        "201": {
+                            "description": "Successful"
+                        },
+                        "404": {
+                            "description": "Not Found"
+                        },
+                        "500": {
+                            "description": "Unable to Post"
+                        }
+                    }
+                },
+                "summary" : "Login as a User",
+                "requestBody" : {
+                    "content" : {
+                        "application/json" : {
+                            "schema" : {
+                                "type" : "object",
+                                "properties" : {
+                                    "email": {
+                                        "type": "String",
+                                        "default": "brian@brian.com"
+                                    },
+                                    "password": {
+                                        "type": "String",
+                                        "default": "batmant1234"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                   
+               
+                }
+            },
+        
+        "/profile" : {
+            "get" : {
+                "tags" : [
+                    "Get"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful"
+                    },
+                    "201": {
+                        "description": "Successful"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Unable to Post"
+                    }
+                }
+            },
+            "summary" : "Get Profile",
+            "requestBody" : {
+                "content" : {
+                    "application/json" : {
+                        "schema" : {
+                            "type" : "object",
+                            "properties" : {
+                                "firstName": {
+                                    "type": "String",
+                                    "default": "Brian"
+                                },
+                                "lastName": {
+                                    "type": "String",
+                                     "default": "Barker"
+                                },
+                                "address": {
+                                   "type": "String",
+                                   "default": "123 main"
+                                },
+                                "city": {
+                                    "type": "String",
+                                    "default": "Wichita"
+                                },
+                                "state": {
+                                    "type": "String",
+                                    "default": "KS"
+                                },
+                                "zip": {
+                                    "type": "String",
+                                    "default": 67202
+                                },
+                                "email": {
+                                    "type": "String",
+                                    "default": "brian@brian.com"
+                                },
+                                "password": {
+                                    "type": "String",
+                                    "default": "batmant1234"
+                                }
+                            }
+                        }
+                    }
+                }
+               
+    }   }    }
+           
+}   
+    
+
+   

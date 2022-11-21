@@ -1,8 +1,12 @@
 const express = require ('express');
-const mongoose = require ('mongoose')
+const mongoose = require ('mongoose');
 const app = express();
-const cors = require ('cors')
-const userRoute = require('../router/userRoute')
+const cors = require ('cors');
+const userRoute = require('../router/userRoute');
+const swaggerJsDoc = require("swagger-jsdoc");
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocs = require('../config/swaggerOptions.json');
+
 //connect to mongoose
 mongoose.connect(process.env.mongoDbUrl, (err) => {
     if(err){
@@ -20,16 +24,8 @@ app.use(cors());
 //Routes
 app.use("/users", userRoute);
 
-//middleware to handle cors policy
-// app.use((req, res, next) => {
-//     res.header('Access-Control-Allow-Origin', '*');
-//     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
-
-//     if(req.method === 'Options'){
-//         res.header('Access-Control-Allow-Methods', 'POST, PUT, GET, PATCH, DELETE');
-//     }
-//     next();
-// })
+//add middleware for swagger documentation
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 //middleware modules for error handling
 app.use((req, res, next) => {
